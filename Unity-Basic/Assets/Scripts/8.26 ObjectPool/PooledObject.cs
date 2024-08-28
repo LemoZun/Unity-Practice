@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PooledObject : MonoBehaviour
 {
-    public ObjectPool returnPool;
+    public ObjectPooling returnPool;
     [SerializeField] float returnTime = 5;
+    //[Range(0f,1f)]
+    //[SerializeField] float bulletScale;
 
     private float curTime;
 
@@ -13,7 +15,7 @@ public class PooledObject : MonoBehaviour
     private void OnEnable()
     {
         curTime = returnTime;
-        transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+        //transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
     }
 
     private void Update()
