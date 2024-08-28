@@ -107,7 +107,10 @@ GameObject:
   m_Component:
   - component: {fileID: 863239611660058316}
   - component: {fileID: 1659397402962927296}
-  - component: {fileID: -7400675000554098677}
+  - component: {fileID: 7388480588956106785}
+  - component: {fileID: 7537104162303902042}
+  - component: {fileID: 5379273440938270156}
+  - component: {fileID: 363443976862876533}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -148,7 +151,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7400675000554098677
+--- !u!114 &7388480588956106785
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,11 +160,65 @@ MonoBehaviour:
   m_GameObject: {fileID: 863239611660058289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2abed8e6a21a89d4582a1c1f9a25230c, type: 3}
+  m_Script: {fileID: 11500000, guid: 121c55f3ad402704096c6d9690f97caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletType:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sellectedBullet: {fileID: 0}
   moveSpeed: 5
-  rotateSpeed: 100
+  rotateSpeed: 180
+  muzzlePoint: {fileID: 7498953626985166073}
+--- !u!114 &7537104162303902042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863239611660058289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929cfdb45f9e24e4dbee90b6a269a5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 379393294250075660, guid: b2e0fead8848efe40b1080ba0d073378, type: 3}
+  size: 5
+  capacity: 5
+  CreateOnEmpty: 1
+--- !u!114 &5379273440938270156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863239611660058289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929cfdb45f9e24e4dbee90b6a269a5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 379393294250075660, guid: d355bc2e2c7451b47863d1e858371c9b, type: 3}
+  size: 5
+  capacity: 5
+  CreateOnEmpty: 1
+--- !u!114 &363443976862876533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863239611660058289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929cfdb45f9e24e4dbee90b6a269a5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 379393294250075660, guid: 523e9fd0de00d5b4481a36db4bbc7050, type: 3}
+  size: 5
+  capacity: 5
+  CreateOnEmpty: 1
 --- !u!1 &1645689835751299621
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,8 +262,6 @@ GameObject:
   - component: {fileID: 3533414863497873210}
   - component: {fileID: 2251038039452823522}
   - component: {fileID: 7294551167807664553}
-  - component: {fileID: 7243851654109225726}
-  - component: {fileID: 8870721767601238799}
   m_Layer: 0
   m_Name: FireTurret
   m_TagString: Untagged
@@ -293,36 +348,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7243851654109225726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3918519383640545738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923d853c7466f0340ac7ea4160b0e2ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPool: {fileID: 8870721767601238799}
-  muzzlePoint: {fileID: 7498953626985166073}
-  bulletSpeed: 5
---- !u!114 &8870721767601238799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3918519383640545738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 605fb5c3cd5288b49ab89dfb988d0bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pool: []
-  prefab: {fileID: 7295707628333203222, guid: 8e77db0ece5550a40b9fd57ef64874af, type: 3}
-  size: 10
 --- !u!1 &7404665492119155547
 GameObject:
   m_ObjectHideFlags: 0
