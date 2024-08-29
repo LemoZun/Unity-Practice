@@ -5,28 +5,41 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] PooledObject pooledObject;
+    
     [SerializeField] float moveSpeed;
-    [SerializeField] float returnTime = 10;
-    private float currentTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-               
-    }
+    [SerializeField] float returnTime = 10f;
+ 
+    private Coroutine bulletLife;
+    
     private void OnEnable()
     {
-        currentTime = 0;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.forward * moveSpeed * Time.deltaTime;
-        currentTime += Time.deltaTime;
-        if(currentTime >= returnTime)
+        if (bulletLife == null)
         {
-            pooledObject.ReturnPool();
+            bulletLife = StartCoroutine(BulletDestroyRoutine());
         }
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        //currentTime += Time.deltaTime;
+        //if(currentTime >= returnTime)
+        //{
+        //    pooledObject.ReturnPool();
+        //}
+    }
+
+    IEnumerator BulletDestroyRoutine()
+    {
+        yield return new WaitForSeconds(returnTime);
+        Debug.Log("10초 지남");
+        pooledObject.ReturnPool();
+        Debug.Log("리턴풀");
+        StopCoroutine(bulletLife);
+        bulletLife = null;
+        
+        
     }
 }
