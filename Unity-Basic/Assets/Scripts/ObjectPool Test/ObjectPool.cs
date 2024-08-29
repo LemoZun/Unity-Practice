@@ -9,16 +9,16 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int capacity;
     [SerializeField] bool CreateOnEmpty = true; // 이건 어디에 쓰는거지? 왜 있는거지
 
-    private Stack<PooledObject> pool;
+    private Queue<PooledObject> pool;
     private void Awake()
     {
-        pool = new Stack<PooledObject>(capacity);
+        pool = new Queue<PooledObject>(capacity);
         for(int i = 0; i < size; i++)
         {
             PooledObject instance = Instantiate(prefab);
             instance.gameObject.SetActive(false); // 생성 후 일단 비활성화
             instance.Pool = this; // 이게 뭘까
-            pool.Push(instance);
+            pool.Enqueue(instance);
         }
     }
 
@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
         if (pool.Count > 0)
         {
             Debug.Log("스택 팝");
-            PooledObject instance = pool.Pop();
+            PooledObject instance = pool.Dequeue();
             instance.transform.position = position;
             instance.transform.rotation = rotation;
             instance.gameObject.SetActive(true);
@@ -46,7 +46,7 @@ public class ObjectPool : MonoBehaviour
         if(pool.Count < capacity)
         {
             _instance.gameObject.SetActive(false);
-            pool.Push(_instance);
+            pool.Enqueue(_instance);
         }
         else
         {
