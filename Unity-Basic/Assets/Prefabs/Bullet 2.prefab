@@ -128,8 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1d5b9b66d783a4ba799834b5c72d50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  pooledObject: {fileID: 379393294250075660}
+  moveSpeed: 3
   returnTime: 10
+  bulletTime: 0
 --- !u!114 &379393294250075660
 MonoBehaviour:
   m_ObjectHideFlags: 0

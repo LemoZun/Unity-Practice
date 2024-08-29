@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] PooledObject prefab;
     [SerializeField] int size;
     [SerializeField] int capacity;
-    [SerializeField] bool CreateOnEmpty = true; // 이건 어디에 쓰는거지? 왜 있는거지
+    
 
     private Queue<PooledObject> pool;
     private void Awake()
@@ -27,25 +27,16 @@ public class ObjectPool : MonoBehaviour
         Debug.Log("GetPool 메서드 호출 시작");
         if (pool.Count > 0)
         {
-            Debug.Log("1번 오류 깃발");
+            Debug.Log("스택 팝");
             PooledObject instance = pool.Dequeue();
             instance.transform.position = position;
             instance.transform.rotation = rotation;
             instance.gameObject.SetActive(true);
             return instance;
         }
-        else if (CreateOnEmpty) // 여기에서 밖에 안쓰는데 왜 있지? // 큐가 비었을때??
-        {
-            Debug.Log("2번 오류 깃발");
-            PooledObject instance = Instantiate(prefab);
-            instance.transform.position = position;
-            instance.transform.rotation = rotation;
-            instance.Pool = this; // 이게 대체 뭘까
-            return instance;
-        }
         else
         {
-            Debug.Log("3번 오류 깃발");
+            Debug.Log("5발 모두 쏨");
             return null;
         }
         
