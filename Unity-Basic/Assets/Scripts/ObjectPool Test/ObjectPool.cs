@@ -7,7 +7,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] PooledObject prefab;
     [SerializeField] int size;
     [SerializeField] int capacity;
-    [SerializeField] bool CreateOnEmpty = true; // 이건 어디에 쓰는거지? 왜 있는거지
+    
 
     private Queue<PooledObject> pool;
     private void Awake()
